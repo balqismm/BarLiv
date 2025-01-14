@@ -211,11 +211,11 @@ function validateLogin() {
   }
 
 //Functions for cart.html
-function orderAgain(itemName, itemPrice) {
+function orderAgain(itemName, itemPrice, itemImage) {
   alert(`${itemName} has been added to your cart!`);
 
 // Call addToCart function to store item in localStorage
-  addToCart(itemName, itemPrice);
+  addToCart(itemName, itemPrice, itemImage);
 }
 
   // Function to update the cart summary based on selected items
@@ -313,7 +313,7 @@ function displayCart() {
 }
 
   // Function to add the item to the cart
-function addToCart(itemName, itemPrice) {
+function addToCart(itemName, itemPrice, itemImage) {
   let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Check if item already exists and update quantity, otherwise add new item
@@ -325,7 +325,7 @@ function addToCart(itemName, itemPrice) {
       name: itemName,
       price: itemPrice,
       quantity: 1, // Initialize with 1 if it's the first time the item is added
-      image: 'item_image_url' // Replace with actual image URL
+      image: itemImage // Replace with actual image URL
     };
     cartItems.push(item);
   }
